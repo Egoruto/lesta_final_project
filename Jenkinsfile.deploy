@@ -6,6 +6,18 @@ pipeline {
     }
 
     stages {
+        stage('Upload .env file') {
+            steps {
+                sshagent (credentials: ['prod-server-ssh']) {
+                    withCredentials([file(credentialsId: 'prod-env-file', variable: 'ENV_FILE')]) {
+                        sh '''
+                        scp -o StrictHostKeyChecking=no $ENV_FILE ubuntu@192.168.0.44:/opt/flask-api/.env
+                        '''
+                    }
+                }
+            }
+        }
+
         stage('Deploy to Production Server') {
             steps {
                 sshagent (credentials: ['prod-server-ssh']) {
@@ -20,3 +32,4 @@ pipeline {
         }
     }
 }
+
