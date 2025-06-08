@@ -14,8 +14,7 @@ pipeline {
 
         stage('Lint') {
             steps {
-                sh 'pip install flake8'
-                sh 'flake8 flask-api/app/'
+                sh 'docker run --rm $IMAGE_NAME flake8 flask-api/app/'
             }
         }
 
