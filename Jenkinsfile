@@ -14,7 +14,7 @@ pipeline {
 
         stage('Lint') {
             steps {
-                sh 'docker run --rm $IMAGE_NAME flake8 flask-api/app/'
+                sh 'docker run --rm $IMAGE_NAME flake8 app/'
             }
         }
 
