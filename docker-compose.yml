@@ -16,7 +16,7 @@ services:
       retries: 5
 
   web:
-    build: .
+    image: gigamind/flask-api
     ports:
       - "5050:5050"
     env_file:
