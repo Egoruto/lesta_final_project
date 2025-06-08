@@ -40,7 +40,7 @@ pipeline {
             steps {
                 sshagent (credentials: ['prod-server-ssh']) {
                     sh '''
-                    ssh -o StrictHostKeyChecking=no ubuntu@your-server-ip '
+                    ssh -o StrictHostKeyChecking=no ubuntu@37.9.53.127 '
                     cd /opt/flask-api &&
                     docker compose pull &&
                     docker compose up -d'
