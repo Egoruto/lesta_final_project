@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
 def create_app():
     flask_app = Flask(__name__)
     flask_app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
@@ -18,7 +19,3 @@ def create_app():
         db.create_all()
 
     return flask_app
-
-if __name__ == '__main__':
-    app = create_app()
-    app.run(host='0.0.0.0', port=5000)

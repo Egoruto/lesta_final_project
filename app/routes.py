@@ -3,9 +3,11 @@ from app.models import db, Result
 
 bp = Blueprint('main', __name__)
 
+
 @bp.route('/ping', methods=['GET'])
 def ping():
     return jsonify({"status": "ok"})
+
 
 @bp.route('/submit', methods=['POST'])
 def submit():
@@ -22,6 +24,7 @@ def submit():
 
     return jsonify({"message": "Data saved successfully"}), 201
 
+
 @bp.route('/results', methods=['GET'])
 def results():
     all_results = Result.query.all()
@@ -34,4 +37,3 @@ def results():
             "timestamp": r.timestamp.isoformat()
         })
     return jsonify(output)
-
