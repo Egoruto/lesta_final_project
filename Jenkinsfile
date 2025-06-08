@@ -5,12 +5,6 @@ pipeline {
         IMAGE_NAME = "gigamind/flask-api"
     }
 
-    stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main', url: 'https://github.com/Egoruto/lesta_final_project.git'
-            }
-        }
 
         stage('Build Docker Image') {
             steps {
