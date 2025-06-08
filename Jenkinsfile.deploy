@@ -5,12 +5,16 @@ pipeline {
         IMAGE_NAME = "gigamind/flask-api"
     }
 
-    stages {
-        stage('Upload .env file') {
+     stages {
+        stage('Upload docker-compose.yml and .env') {
             steps {
                 sshagent (credentials: ['prod-server-ssh']) {
                     withCredentials([file(credentialsId: 'prod-env-file', variable: 'ENV_FILE')]) {
                         sh '''
+                        # Copy docker-compose.yml
+                        scp -o StrictHostKeyChecking=no docker-compose.yml ubuntu@192.168.0.44:/opt/flask-api/docker-compose.yml
+
+                        # Copy .env
                         scp -o StrictHostKeyChecking=no $ENV_FILE ubuntu@192.168.0.44:/opt/flask-api/.env
                         '''
                     }
