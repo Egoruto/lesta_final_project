@@ -55,16 +55,23 @@ https://docs.docker.com/engine/install/
 ### 2. Добавить креды в Jenkins:
 
 Manage Jenkis -> Credentials -> Add Credentials
+
 ![img.png](images/img.png)
-* **docker-hub-creds** — username/password (для пуша образа)
+```
+docker-hub-creds — username/password (для пуша образа)
+```
 
 ![img.png](images/img1.png)
 
-* **SSH ключ** — для доступа на целевой сервер
+```
+prod-server-ssh — для доступа на целевой сервер
+```
 
 ![img.png](images/img3.png)
 
-* добавить файл .env как secret file
+```
+prod-env-file - для копирования .env на целевой сервер
+```
 
 ![img.png](images/img4.png)
 
