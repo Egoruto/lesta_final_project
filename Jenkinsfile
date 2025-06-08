@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/Egoruto/lesta_final_project.git'
+                git branch: 'main', url: 'https://github.com/Egoruto/lesta_final_project.git'
             }
         }
 
