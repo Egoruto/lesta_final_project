@@ -5,7 +5,7 @@ pipeline {
         IMAGE_NAME = "gigamind/flask-api"
     }
 
-
+    stages {
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t $IMAGE_NAME .'
