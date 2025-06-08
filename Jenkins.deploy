@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+
+    environment {
+        IMAGE_NAME = "gigamind/flask-api"
+    }
+
+    stages {
+        stage('Deploy to Production Server') {
+            steps {
+                sshagent (credentials: ['prod-server-ssh']) {
+                    sh '''
+                    ssh -o StrictHostKeyChecking=no ubuntu@37.9.53.127 '
+                    cd /opt/flask-api &&
+                    docker compose pull &&
+                    docker compose up -d'
+                    '''
+                }
+            }
+        }
+    }
+}
