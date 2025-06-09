@@ -30,6 +30,7 @@ pipeline {
                     cd /opt/flask-api &&
                     docker compose pull &&
                     docker compose up -d'
+                    docker exec flask-api-db-1 psql -U postgres -tc \"SELECT 1 FROM pg_database WHERE datname = 'flaskdb'\" | grep -q 1 || docker exec flask-api-db-1 psql -U postgres -c \"CREATE DATABASE flaskdb\"
                     '''
                 }
             }
